@@ -25,35 +25,22 @@ int main()
         for(int j=0;j<n;j++){
             if((bag-w[j]) >= 0 ){
                 bag -= w[j];
-                
-                
-
                 if((bag == 0) && (j != n-1)){
                     bag = i;
                 }
-                // cout << "**" << bag << endl;
-                // cout << "Bagsize: " << i << " lose weight: " << wBag << endl; 
-
             }else{
                 wBag += bag;
-                // if(j != (n-1)){
                     bag = i;
-                // }
                 bag -= w[j];
-                // cout << "**" << bag << endl;
             }
-
             if(j==(n-1)){
                     wBag += bag;
                 }
-            // cout << "**" << bag << endl;
-            // cout << "Bagsize: " << i << " lose weight: " << wBag << " " << endl; 
         }
         if(wBag < min){
             min = wBag;
             goodSize = i;
         }
-        // cout << "Bagsize: " << i << " lose weight: " << wBag << endl; 
     }
     cout << goodSize << endl;
 }
