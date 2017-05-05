@@ -4,32 +4,45 @@
 
 using namespace std;
 
+map<int,int[100000]> map;
+int arr[100001];
+
+int getParent(int data)
+{
+    if(arr[data] == data) {
+        return data;
+    }else {
+        int a = getParent(arr[data]);
+        arr[data] = a;
+        return a;
+    }
+}
+
 int main()
 {
-    int n, q, x, y,temp;
+    int n, q, x, y,tempx,tempy;
     char command;
-    int array[100000];
+   
     scanf("%d %d", &n, &q);
-    array[0] = 0;
     for(int i=1; i<=n; i++){
-        array[i] = i;
-        // cout << array[i] << endl;
+        arr[i] = i;
     }
 
     for(int i=0; i<q; i++){
         scanf(" %c %d %d", &command, &x, &y);
+        tempx = getParent(x);
+        tempy = getParent(y);
         if (command == 'c') {
-            temp = array[y];
-            array[y] = array[x];
-            for(int j=1; j<=n; j++) {
-                if(array[j] == temp) {
-                    array[j] = array[x];
-                }
-                // cout << array[j] << " ";
+            
+            if(tempx > tempy) {
+                arr[tempx] = tempy;
+            } else if (tempx == tempy){
+                continue;
+            }else {
+                arr[tempy] = tempx;
             }
-            // cout << endl;
         } else if (command == 'q'){
-            if(array[x] == array[y]) {
+            if(arr[tempx] == arr[tempy]) {
                 printf("yes\n");
             } else {
                 printf("no\n");
