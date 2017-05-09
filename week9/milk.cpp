@@ -4,7 +4,6 @@
 
 using namespace std;
 
-map<int,int[100000]> map;
 int arr[100001];
 
 int getParent(int data)
